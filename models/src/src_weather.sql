@@ -1,0 +1,42 @@
+with cte as (
+select
+    *
+from
+    RAW.WEATHER_DATA)
+select
+    TIME_EPOCH,
+    TIME,
+    TEMP_C,
+    TEMP_F,
+    IS_DAY,
+    CONDITION,
+    WIND_MPH,
+    WIND_KPH,
+    WIND_DEGREE,
+    WIND_DIR,
+    PRESSURE_MB,
+    PRESSURE_IN,
+    PRECIP_MM,
+    PRECIP_IN,
+    HUMIDITY,
+    CLOUD,
+    FEELSLIKE_C,
+    FEELSLIKE_F,
+    WINDCHILL_C,
+    WINDCHILL_F,
+    HEATINDEX_C,
+    HEATINDEX_F,
+    DEWPOINT_C,
+    DEWPOINT_F,
+    WILL_IT_RAIN,
+    CHANCE_OF_RAIN,
+    WILL_IT_SNOW,
+    CHANCE_OF_SNOW,
+    VIS_KM,
+    VIS_MILES,
+    GUST_MPH,
+    GUST_KPH,
+    STATE,
+    CITY
+from
+    cte
