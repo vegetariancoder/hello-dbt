@@ -2,7 +2,7 @@ with cte as (
 select
     *
 from
-    RAW.ASTRONOMY_DATA)
+    {{ source('telco','astronomy') }})
 select
     SUNRISE,
     SUNSET,

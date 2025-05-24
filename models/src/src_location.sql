@@ -2,7 +2,7 @@ with cte as (
 select
     *
 from
-    RAW.LOCATION_DATA)
+    {{ source('telco','location') }})
 select
     NAME as CITY_NAME,
     REGION,

@@ -2,7 +2,7 @@ with cte as (
 select
     *
 from
-    RAW.WEATHER_DATA)
+    {{ source('telco','weather') }})
 select
     TIME_EPOCH,
     TIME,

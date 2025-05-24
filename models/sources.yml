@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: telco
+    schema: raw
+    tables:
+      - name: astronomy
+        identifier: astronomy_data
+
+      - name: location
+        identifier: location_data
+
+      - name: weather
+        identifier: weather_data
