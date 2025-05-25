@@ -4,6 +4,7 @@ select
 from
     {{ source('telco','weather') }})
 select
+    {{ dbt_utils.generate_surrogate_key(['STATE', 'CITY']) }} AS location_key,
     TIME_EPOCH,
     TIME,
     TEMP_C,

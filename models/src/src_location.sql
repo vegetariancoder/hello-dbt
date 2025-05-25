@@ -4,8 +4,9 @@ select
 from
     {{ source('telco','location') }})
 select
+    {{ dbt_utils.generate_surrogate_key(['NAME', 'REGION']) }} AS location_key,
     NAME as CITY_NAME,
-    REGION,
+    REGION as STATE_NAME,
     COUNTRY,
     LAT as LATITUDE,
     LON as LONGITUDE,
