@@ -1,10 +1,10 @@
-with cte as (
+with stg_weather as (
 select
     *
 from
     {{ source('telco','weather') }})
 select
-    {{ dbt_utils.generate_surrogate_key(['STATE', 'CITY']) }} AS location_key,
+    WEATHER_ID,
     TIME_EPOCH,
     TIME,
     TEMP_C,
@@ -39,5 +39,6 @@ select
     GUST_KPH,
     STATE,
     CITY
+    {{ add_loaded_at_column() }}
 from
-    cte
+    stg_weather

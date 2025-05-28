@@ -1,10 +1,10 @@
-with cte as (
+with stg_location as (
 select
     *
 from
     {{ source('telco','location') }})
 select
-    {{ dbt_utils.generate_surrogate_key(['NAME', 'REGION']) }} AS location_key,
+    LOCATION_ID,
     NAME as CITY_NAME,
     REGION as STATE_NAME,
     COUNTRY,
@@ -13,5 +13,6 @@ select
     TZ_ID,
     LOCALTIME_EPOCH,
     LOCAL_TIME
+    {{ add_loaded_at_column() }}
 from
-    cte
+    stg_location

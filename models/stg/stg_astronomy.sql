@@ -1,10 +1,10 @@
-with cte as (
+with stg_astronomy as (
 select
     *
 from
     {{ source('telco','astronomy') }})
 select
-    {{ dbt_utils.generate_surrogate_key(['STATE', 'CITY']) }} AS location_key,
+    ASTRONOMY_ID,
     SUNRISE,
     SUNSET,
     MOONRISE,
@@ -13,5 +13,6 @@ select
     MOON_ILLUMINATION as MOON_ILLUMINATION_VALUE,
     STATE,
     CITY
+    {{ add_loaded_at_column() }}
 from
-    cte
+    stg_astronomy
