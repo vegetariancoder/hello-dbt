@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: dim_location
+    description: Cleansed location dim table which contains distinct location info
+    columns:
+
+     - name: LOCALTIME_EPOCH
+       description: Primary key for listings
+       tests:
+         - unique
+         - not_null
+
+     - name: COUNTRY
+       description: Country name in table
+       tests:
+         - accepted_values:
+             values: ['India','Philippines','Pakistan','Cuba','Bangladesh','Nepal']
+
+#     - name: room_type
+#       tests:
+#         - accepted_values:
+#             values: ['Entire home/apt',
+#                      'Private room',
+#                      'Shared room',
+#                      'Hotel room']
+#     - name: minimum_nights
+#       description: '{{ doc("dim_listing_cleansed__minimum_nights") }}'
+#       tests:
+#         - positive_value # coming from macro : positive_value.sql
